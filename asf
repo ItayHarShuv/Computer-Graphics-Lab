@@ -1,0 +1,136 @@
+[1mdiff --git a/2Dzhed/Assembly-CSharp.csproj b/2Dzhed/Assembly-CSharp.csproj[m
+[1mindex d282c99..5e3019f 100644[m
+[1m--- a/2Dzhed/Assembly-CSharp.csproj[m
+[1m+++ b/2Dzhed/Assembly-CSharp.csproj[m
+[36m@@ -4,18 +4,20 @@[m
+     <LangVersion>latest</LangVersion>[m
+     <CscToolPath>D:\2019.4.12f1\Editor\Data\Tools\RoslynScripts</CscToolPath>[m
+     <CscToolExe>unity_csc.bat</CscToolExe>[m
+[32m+[m[32m    <TargetFrameworkProfile />[m
+   </PropertyGroup>[m
+   <PropertyGroup>[m
+     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>[m
+     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>[m
+     <ProductVersion>10.0.20506</ProductVersion>[m
+     <SchemaVersion>2.0</SchemaVersion>[m
+[31m-    <RootNamespace></RootNamespace>[m
+[31m-    <ProjectGuid>{A513BC8D-6A7D-D6C5-EEBE-D27CF600D276}</ProjectGuid>[m
+[32m+[m[32m    <RootNamespace>[m
+[32m+[m[32m    </RootNamespace>[m
+[32m+[m[32m    <ProjectGuid>{0058B742-77E1-9F2C-71BF-534DAC515D6E}</ProjectGuid>[m
+     <OutputType>Library</OutputType>[m
+     <AppDesignerFolder>Properties</AppDesignerFolder>[m
+     <AssemblyName>Assembly-CSharp</AssemblyName>[m
+[31m-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>[m
+[32m+[m[32m    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>[m
+     <FileAlignment>512</FileAlignment>[m
+     <BaseDirectory>.</BaseDirectory>[m
+   </PropertyGroup>[m
+[36m@@ -55,617 +57,617 @@[m
+     </Reference>[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+[31m-     <Compile Include="Assets\CellThouch.cs" />[m
+[31m-     <Compile Include="Assets\Gridmanager.cs" />[m
+[31m- <Reference Include="UnityEngine">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.AIModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.ARModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.AccessibilityModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.AndroidJNIModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AndroidJNIModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.AnimationModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.AssetBundleModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.AudioModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.ClothModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.ClusterInputModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.ClusterRendererModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.CoreModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.CrashReportingModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.DSPGraphModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.DSPGraphModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.DirectorModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.GameCenterModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.GridModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.HotReloadModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.HotReloadModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.IMGUIModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.ImageConversionModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.InputModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.InputLegacyModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputLegacyModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.JSONSerializeModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.LocalizationModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.LocalizationModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.ParticleSystemModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.PerformanceReportingModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.PhysicsModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.Physics2DModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.ProfilerModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ProfilerModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.ScreenCaptureModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.SharedInternalsModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.SpriteMaskModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.SpriteShapeModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll</HintPath>[m
+[31m- </Reference>[m
+[31m- <Reference Include="UnityEngine.StreamingModule">[m
+[31m- <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.StreamingModule.dll</HintPath>[m
+[31m
