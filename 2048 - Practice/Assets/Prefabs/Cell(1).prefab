@@ -87,3 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceff7a583ea20854baa6bc640f874635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  right: {fileID: 0}
+  left: {fileID: 0}
+  up: {fileID: 0}
+  down: {fileID: 0}
+  fill: {fileID: 0}
