@@ -1,65 +1,36 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class Rotator : MonoBehaviour
 {
-    //[SerializeField] float rotationSpeed = 500f;
-    //bool dragging = false;
-    //Rigidbody rb;
+    Vector3 point; 
+    [SerializeField] float rotationSpeed = 100f;
 
-    //void Start()
-    //{
-    //    rb = GetComponent<Rigidbody>();
-    //}
-
-
-
-    //void OnMouseDrag()
-    //{
-    //    dragging = true;
-    //}
-
-    //void Update()
-    //{
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-    //        dragging = false;
-    //    }
-
-    //}
-    //void FixedUpdate()
-    //{
-
-    //    if (dragging)
-    //    {
-    //        float x = Input.GetAxis("Mouse X") * rotationSpeed * Time.fixedDeltaTime * 10000;
-    //        float y = Input.GetAxis("Mouse Y") * rotationSpeed * Time.fixedDeltaTime * 10000;
-
-    //        rb.AddTorque(Vector3.down * x);
-    //        rb.AddTorque(Vector3.right * y);
-    //    }
-    //}
-
-    Vector3 mPrevPos = Vector3.zero;
-    Vector3 mPosDelta = Vector3.zero;
+    void Start()
+    {
+        point = transform.position;
+    }
 
     void Update()
     {
-        if(Input.GetMouseButton(0))
+        
+        if (Input.GetKey(KeyCode.A))
         {
-            mPosDelta = Input.mousePosition - mPrevPos;
-            if(Vector3.Dot(transform.up, Vector3.up) >= 0)
-            {
-                transform.Rotate(transform.up, -Vector3.Dot(mPosDelta, Camera.main.transform.right), Space.World);
-            }
-            else
-            {
-                transform.Rotate(transform.up, Vector3.Dot(mPosDelta, Camera.main.transform.right), Space.World);
-            }
-
-            transform.Rotate(Camera.main.transform.right, Vector3.Dot(mPosDelta, Camera.main.transform.up), Space.World);
+            transform.RotateAround(point, Vector3.up, rotationSpeed * Time.deltaTime);
         }
-
-        mPrevPos = Input.mousePosition;
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.RotateAround(point, -Vector3.up, rotationSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.RotateAround(point, -Vector3.left, rotationSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            transform.RotateAround(point, Vector3.left, rotationSpeed * Time.deltaTime);
+        }
     }
 }
+
+

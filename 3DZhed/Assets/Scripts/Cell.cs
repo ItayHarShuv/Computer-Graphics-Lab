@@ -5,17 +5,39 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
+
+
     Mesh mesh;
     Vector3[] vertices = new Vector3[4];
     Vector2[] uv;
     int[] triangles;
     public Material mat;
+    public int originalNum = -3;
+    public int num = -3;
+    public Dir dotDirection;
+
+    public Cell cwx;
+    public Cell ccwx;
+    public Cell cwy;
+    public Cell ccwy;
+    public Cell cwz;
+    public Cell ccwz;
 
     void Awake()
     {
         mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
+        GetComponent<MeshFilter>().mesh = mesh;       
         mat = Resources.Load("EmptyCell", typeof(Material)) as Material;
+    }
+
+    void Start()
+    {
+        gameObject.AddComponent<MeshCollider>();
+    }
+
+    void OnMouseDown()
+    {
+        OpenCell.Instance.ClickHandlar(this);
     }
 
     public void CreatShape(Vector3 v0, Vector3 v1, Vector3 v2, Vector3 v3)
@@ -63,19 +85,35 @@ public class Cell : MonoBehaviour
         return temp;
     }
 
-    public void AddFill(int num)
+    
+
+    public void AddFill(int fill)
     {
-        int x = 140 * (num - 1);
-        int y = 180;
-        int width = 140;
-        int hight = 180;
-        uv[0] = ConvertPixelsToUVCoordinates(x + width, y);
-        uv[1] = ConvertPixelsToUVCoordinates(x , y );
-        uv[2] = ConvertPixelsToUVCoordinates(x + width, y - hight);
-        uv[3] = ConvertPixelsToUVCoordinates(x, y - hight);
+        uv[0] = new Vector2(1, 1);
+        uv[1] = new Vector2(0, 1);
+        uv[2] = new Vector2(1, 0);
+        uv[3] = new Vector2(0, 0);
+        switch(fill)
+        {
+            case -1:
+                //DotCell
+                mat = Resources.Load("DotCell", typeof(Material)) as Material;
+                break;
+            case -2:
+                //WinCell
+                mat = Resources.Load("WinCell", typeof(Material)) as Material;
+                break;
+            case -3:
+                //EmptyCell
+                mat = Resources.Load("EmptyCell", typeof(Material)) as Material;
+                break;
+            default:
+                //Any other number
+                mat = Resources.Load(fill.ToString(), typeof(Material)) as Material;
+                break;
 
-        mat = Resources.Load("Numbers", typeof(Material)) as Material;
-
+        }
+        num = fill;
         UpdateMesh();
 
     }
@@ -94,8 +132,88 @@ public class Cell : MonoBehaviour
         GetComponent<MeshRenderer>().material = mat;
     }
 
-    Vector2 ConvertPixelsToUVCoordinates(int x, int y, int textureWidth = 1400, int textureHight = 180)
+    public void Rename(int face, int row, int col)
     {
-        return new Vector2((float)x / textureWidth, (float)y / textureHight);
+        gameObject.name = "Cell(" + face + ',' + row + ',' + col + ')';
     }
+
+    public void UnfoldDots()
+    {
+        try
+        {               
+            cwx.FillRow(Dir.cwx, num, -1);
+            ccwx.FillRow(Dir.ccwx, num, -1);                                
+        }
+        catch(NullReferenceException){ }
+        try
+        {
+            cwy.FillRow(Dir.cwy, num, -1);
+            ccwy.FillRow(Dir.ccwy, num, -1);
+        }
+        catch (NullReferenceException) { }
+        try
+        {
+            cwz.FillRow(Dir.cwz, num, -1);
+            ccwz.FillRow(Dir.ccwz, num, -1);
+        }
+        catch (NullReferenceException) { }
+        
+    }
+
+    public void FillRow(Dir dir, int n, int fill)
+    {
+        
+        if (n <= 0)
+            return;
+        bool needFill = false;
+        if (num < 0)
+        {
+            n--;
+            needFill = true;
+        }           
+        switch (dir)
+        {
+            case Dir.cwx:
+                cwx.FillRow(dir, n, fill);
+                break;
+            case Dir.ccwx:
+                ccwx.FillRow(dir, n, fill);
+                break;
+            case Dir.cwy:
+                cwy.FillRow(dir, n, fill);
+                break;
+            case Dir.ccwy:
+                ccwy.FillRow(dir, n, fill);
+                break;
+            case Dir.cwz:
+                cwz.FillRow(dir, n, fill);
+                break;
+            case Dir.ccwz:
+                ccwz.FillRow(dir, n, fill);
+                break;
+            default:
+                return;
+        }
+        if(needFill)
+        {
+            if (fill == -1)
+                dotDirection = dir;
+            OpenCell.Instance.secondaryS.Push(this);
+            AddFill(fill);
+        }        
+    }
+
+    
+
+}
+
+public enum Dir
+{
+    defult,
+    cwx,
+    ccwx,
+    cwy,
+    ccwy,
+    cwz,
+    ccwz
 }
