@@ -10,3 +10,7 @@ week 3: I start and finished implementing the 2D version of Zhed after learning 
 week 4: I started implement the 3D virsion of the game, I've done a grided (on every face) cube that I can put numbers on it's cells.
 
 week 5: No progress this week do to other obligations.
+
+week 6: Upgrade the desine a little, made the cube roll with WDSA keys and made the cells open proparly with undo and restart buttons.
+
+week 7: No progress this week do to other obligations.
