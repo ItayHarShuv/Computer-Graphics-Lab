@@ -14,3 +14,5 @@ week 5: No progress this week do to other obligations.
 week 6: Upgrade the desine a little, made the cube roll with WDSA keys and made the cells open proparly with undo and restart buttons.
 
 week 7: No progress this week do to other obligations.
+
+week 8: No progress this week do to other obligations.
