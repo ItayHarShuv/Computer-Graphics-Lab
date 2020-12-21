@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\buttons\ChangeLevel.cs" />
     <Compile Include="Assets\Scripts\buttons\RestartLevel.cs" />
+    <Compile Include="Assets\Scripts\buttons\RotateButton.cs" />
     <Compile Include="Assets\Scripts\buttons\UndoButton.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
