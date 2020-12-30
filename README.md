@@ -18,3 +18,5 @@ week 7: No progress this week do to other obligations.
 week 8: No progress this week do to other obligations.
 
 week 9: Add rotation via buttons
+
+week 10: No progress this week do to other obligations.
