@@ -16,3 +16,11 @@ week 6: Upgrade the desine a little, made the cube roll with WDSA keys and made 
 week 7: No progress this week do to other obligations.
 
 week 8: No progress this week do to other obligations.
+
+week 9: Added rotation via buttons
+
+week 10: No progress this week do to other obligations.
+
+week 11: No progress this week do to other obligations.
+
+week 12: Added win cell and desined 7 levels
