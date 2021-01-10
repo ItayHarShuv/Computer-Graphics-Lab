@@ -113,9 +113,23 @@ public class Cell : MonoBehaviour
                 break;
 
         }
-        num = fill;
-        UpdateMesh();
-
+        if(num == -2 && fill == 0)
+        {
+            //win event
+            num = fill;
+            UpdateMesh();
+            ChangeLevel.Instance.ChangeLevelMet(ChangeLevel.AddSubLevel.add);
+        }
+        else if(num == -2)
+        {
+            num = fill;
+        }
+        else
+        {
+            num = fill;
+            UpdateMesh();
+        }
+            
     }
 
     void UpdateMesh()

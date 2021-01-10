@@ -22,10 +22,11 @@ public class Grid : MonoBehaviour
     public Cell[,,] cells;
     float cellSize;
     public int currentLevel;
+    public Vector3 winCell;
 
     void Start()
     {
-        currentLevel = 2;
+        currentLevel = 1;
         SetGrid(currentLevel);
     }
 
