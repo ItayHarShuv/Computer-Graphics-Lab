@@ -12,7 +12,7 @@ public class RestartLevel : MonoBehaviour
 
     void TaskOnClick()
     {
-        OpenCell.Instance.Restart();
-        Grid.Instance.GetComponent<RectTransform>().eulerAngles = Vector3.zero;
+        OpenMeshCell.Instance.Restart();
+        MeshedGrid.Instance.GetComponent<Transform>().eulerAngles = Vector3.zero;       
     }
 }

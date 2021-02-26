@@ -20,6 +20,6 @@ public class LevelNum : MonoBehaviour
 
     public void DisplayLevelNum()
     {
-        GetComponent<Text>().text = Grid.Instance.currentLevel.ToString();
+        GetComponent<Text>().text = MeshedGrid.Instance.currentLevel.ToString();
     }
 }

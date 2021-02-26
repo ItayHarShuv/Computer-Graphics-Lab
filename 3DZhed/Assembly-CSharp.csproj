@@ -59,10 +59,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cell.cs" />
     <Compile Include="Assets\Scripts\ChangeLevel.cs" />
-    <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\LevelBuilder.cs" />
     <Compile Include="Assets\Scripts\LevelNum.cs" />
-    <Compile Include="Assets\Scripts\OpenCell.cs" />
+    <Compile Include="Assets\Scripts\MeshInformation.cs" />
+    <Compile Include="Assets\Scripts\MeshedGrid.cs" />
+    <Compile Include="Assets\Scripts\OpenMeshCell.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\buttons\ChangeLevelButton.cs" />
     <Compile Include="Assets\Scripts\buttons\RestartLevel.cs" />

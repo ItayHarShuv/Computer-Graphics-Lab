@@ -13,10 +13,6 @@ public class UndoButton : MonoBehaviour
 
     void TaskOnClick()
     {
-        try
-        {
-            OpenCell.Instance.Undo();
-        }
-        catch{}            
+        OpenMeshCell.Instance.Undo();       
     }
 }

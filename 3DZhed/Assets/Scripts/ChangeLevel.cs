@@ -20,15 +20,15 @@ public class ChangeLevel : MonoBehaviour
 
     public void ChangeLevelMet(AddSubLevel addSub)
     {
-        if (addSub == AddSubLevel.add && Grid.Instance.currentLevel < LevelBuilder.Instance.maxLevel)
+        if (addSub == AddSubLevel.add && MeshedGrid.Instance.currentLevel < LevelBuilder.Instance.maxLevel)
         {
-            Grid.Instance.SetGrid(Grid.Instance.currentLevel + 1);
-            Grid.Instance.GetComponent<RectTransform>().eulerAngles = Vector3.zero;
+            MeshedGrid.Instance.BuildGrid(++MeshedGrid.Instance.currentLevel);
+            MeshedGrid.Instance.GetComponent<Transform>().eulerAngles = Vector3.zero;
         }
-        else if (addSub == AddSubLevel.sub && Grid.Instance.currentLevel > 1)
+        else if (addSub == AddSubLevel.sub && MeshedGrid.Instance.currentLevel > 1)
         {
-            Grid.Instance.SetGrid(Grid.Instance.currentLevel - 1);
-            Grid.Instance.GetComponent<RectTransform>().eulerAngles = Vector3.zero;
+            MeshedGrid.Instance.BuildGrid(--MeshedGrid.Instance.currentLevel);
+            MeshedGrid.Instance.GetComponent<Transform>().eulerAngles = Vector3.zero;
         }
     }
 

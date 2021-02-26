@@ -16,6 +16,7 @@ public class Rotator : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     Vector3 point;

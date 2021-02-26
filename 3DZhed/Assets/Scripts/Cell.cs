@@ -5,23 +5,24 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-
-
     Mesh mesh;
     Vector3[] vertices = new Vector3[4];
+    public int[] verticesInt = new int[4];
     Vector2[] uv;
     int[] triangles;
     public Material mat;
     public int originalNum = -3;
     public int num = -3;
-    public Dir dotDirection;
+    public int dotDirectionMesh = -1;
 
-    public Cell cwx;
-    public Cell ccwx;
-    public Cell cwy;
-    public Cell ccwy;
-    public Cell cwz;
-    public Cell ccwz;
+    [Serializable]
+    public class neighbors
+    {
+        [SerializeField] public Cell n;
+        public int edge;
+    }
+
+    [SerializeField] public neighbors[] nigh = new neighbors[4];
 
     void Awake()
     {
@@ -37,62 +38,38 @@ public class Cell : MonoBehaviour
 
     void OnMouseDown()
     {
-        OpenCell.Instance.ClickHandlar(this);
+        OpenMeshCell.Instance.ClickHandlar(this);                        
     }
 
-    public void CreatShape(Vector3 v0, Vector3 v1, Vector3 v2, Vector3 v3)
+    public void CreatShape(Vector3 v0, Vector3 v1, Vector3 v2, Vector3 v3,
+        int t0 = 0, int t1 = 1, int t2 = 2, int t3 = 0, int t4 = 2, int t5 = 3)
     {
         vertices[0] = v0;
         vertices[1] = v1;
         vertices[2] = v2;
         vertices[3] = v3;
-
         uv = new Vector2[]
-        {
-            new Vector2(0, 1),
+        {               
             new Vector2(1, 1),
-
+            new Vector2(1, 0),
             new Vector2(0, 0),
-            new Vector2(1, 0)
-
-
+            new Vector2(0, 1)                
         };
+        
 
         triangles = new int[]
         {
-            0, 2, 1,
-            2, 3 ,1
+            t0,t1,t2,
+            t3,t4,t5
         };
         
         UpdateMesh();
-    }
-
-    public Cell CloneAndRotate(int deg, char dir)
-    {
-
-        GameObject cell1 = (GameObject)Instantiate(Resources.Load("Cell"), transform);
-        Cell temp = cell1.GetComponent<Cell>();
-        temp.CreatShape(vertices[0], vertices[1], vertices[2], vertices[3]);
-        for (int i = 0; i < 4; i++)
-        {
-            if (dir == 'x')
-                temp.vertices[i] = Quaternion.Euler(deg, 0, 0) * vertices[i];
-            if (dir == 'y')
-                temp.vertices[i] = Quaternion.Euler(0, deg, 0) * vertices[i];
-
-        }
-        temp.UpdateMesh();
-        return temp;
     }
 
     
 
     public void AddFill(int fill)
     {
-        uv[0] = new Vector2(1, 1);
-        uv[1] = new Vector2(0, 1);
-        uv[2] = new Vector2(1, 0);
-        uv[3] = new Vector2(0, 0);
         switch(fill)
         {
             case -1:
@@ -144,39 +121,10 @@ public class Cell : MonoBehaviour
 
         mesh.RecalculateNormals();
         GetComponent<MeshRenderer>().material = mat;
-    }
+    }   
 
-    public void Rename(int face, int row, int col)
+    public void FillRow(int startEdge, int n, int fill, int dotDir = -1)
     {
-        gameObject.name = "Cell(" + face + ',' + row + ',' + col + ')';
-    }
-
-    public void UnfoldDots()
-    {
-        try
-        {               
-            cwx.FillRow(Dir.cwx, num, -1);
-            ccwx.FillRow(Dir.ccwx, num, -1);                                
-        }
-        catch(NullReferenceException){ }
-        try
-        {
-            cwy.FillRow(Dir.cwy, num, -1);
-            ccwy.FillRow(Dir.ccwy, num, -1);
-        }
-        catch (NullReferenceException) { }
-        try
-        {
-            cwz.FillRow(Dir.cwz, num, -1);
-            ccwz.FillRow(Dir.ccwz, num, -1);
-        }
-        catch (NullReferenceException) { }
-        
-    }
-
-    public void FillRow(Dir dir, int n, int fill)
-    {
-        
         if (n <= 0)
             return;
         bool needFill = false;
@@ -184,50 +132,19 @@ public class Cell : MonoBehaviour
         {
             n--;
             needFill = true;
-        }           
-        switch (dir)
-        {
-            case Dir.cwx:
-                cwx.FillRow(dir, n, fill);
-                break;
-            case Dir.ccwx:
-                ccwx.FillRow(dir, n, fill);
-                break;
-            case Dir.cwy:
-                cwy.FillRow(dir, n, fill);
-                break;
-            case Dir.ccwy:
-                ccwy.FillRow(dir, n, fill);
-                break;
-            case Dir.cwz:
-                cwz.FillRow(dir, n, fill);
-                break;
-            case Dir.ccwz:
-                ccwz.FillRow(dir, n, fill);
-                break;
-            default:
-                return;
         }
-        if(needFill)
+        if (needFill)
         {
-            if (fill == -1)
-                dotDirection = dir;
-            OpenCell.Instance.secondaryS.Push(this);
+            OpenMeshCell.Instance.secondaryS.Push(this);
             AddFill(fill);
-        }        
+            if (fill == -1)
+                dotDirectionMesh = dotDir;
+        }
+        
+        nigh[(startEdge + 2) % 4].n.FillRow(nigh[(startEdge + 2) % 4].edge, n, fill, dotDir);       
     }
 
-    
 
-}
 
-public enum Dir
-{
-    defult,
-    cwx,
-    ccwx,
-    cwy,
-    ccwy,
-    cwz,
-    ccwz
+
 }
