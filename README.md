@@ -24,3 +24,5 @@ week 10: No progress this week do to other obligations.
 week 11: No progress this week do to other obligations.
 
 week 12: Added win cell and desined 7 levels
+
+week 13: Made the posibility the play the game on every quad mesh surface
