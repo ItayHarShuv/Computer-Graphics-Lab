@@ -1,6 +1,11 @@
 # Computer-Graphics-Lab
 The computer graphics lab project of Itay Har-Shuv - 3D zhed game
 
+The game is an extention to the game zhed which can be found in google play or the app store. The extention is the implementation of the game over defferend 3D quad meshes.
+The game were created via unity. In addition, to learn unity better, I desided to make the 2048 game and the 2D version of the game. After doing those games, I sterted implement the 3D game but only on grided cube. I that by creating differnt mesh for every cell, loacate it in the right place and adding the uv of the number/empty cell. I connected every cell to its neighbors made the cell open and so on. I added restart and undo buttons. After finishing implement the game on a grided cube, I made it for every quad mesh. This I did by uploading a quadmesh to blender, then put it through a code in python that gave me the list of vertecies and squares of the mesh. Via those lists I was able to create the mesh myself in unity and play the game in it.
+
+
+**Week Progression**
 week 1: Writing the game description page, start practice simple basics of unity
 
 week 2: I had started implementing the 2D version of the game and made the grid and such. After a while, I desided to get a better understanding of unity by implementing 2048 game from a tuturial in youtube and finshed the 2048 implemention
